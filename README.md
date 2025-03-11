@@ -11,7 +11,7 @@ Um sistema de folha de pagamento gerencia os pagamentos dos empregados de vária
 
 ---
 
-![image.png](attachment:dfa8038e-9d2f-4978-bd9b-ec9ef0a6a749:image.png)
+<img src="/image/image.png">
 
 ---
 
