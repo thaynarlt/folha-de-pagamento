@@ -1,42 +1,77 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         // Definição do salário mínimo para todos os empregados
         Empregado.setSalarioMinimo(1500.00);
         
-        /* 
-        * O parâmetro "quantidade" representa o número de salários mínimos que o empregado recebe.
-        * Exemplo:
-        * - Se "quantidade" for 2, o salário do empregado será (2 * salário mínimo) - (0.1 * salário mínimo).
-        * - A dedução de 10% sobre o salário mínimo representa um desconto fixo aplicado a todos.
-        */
+        // Criando lojas e adicionando empregados
+        Loja loja1 = new Loja("12.345.678/0001-99", "Paloma", new Gerente(1, 800));
+        loja1.adicionar(new Empregado(1));
+        loja1.adicionar(new Empregado(1));
         
-        // Criando um gerente (que também é um empregado, mas recebe gratificação adicional)
-        Gerente gerente = new Gerente(3, 2000); // Ganha 3 salários mínimos + R$2000 de gratificação
+        Loja loja2 = new Loja("15.125.688/0001-55", "Armazém Paraíba", new Gerente(1, 500));
+        loja2.adicionar(new Empregado(2));
+        loja2.adicionar(new Empregado(2));
         
-        // Criando uma loja e adicionando o gerente
-        Loja loja = new Loja("12.345.678/0001-99", "Paloma", gerente);
-        
-        // Criando empregados normais com diferentes quantidades de salário mínimo
-        Empregado emp1 = new Empregado(2);   // Ganha 2 salários mínimos - desconto de 10% do salário mínimo
-        Empregado emp2 = new Empregado(1.5); // Ganha 1.5 salários mínimos - desconto de 10% do salário mínimo
-        Empregado emp3 = new Empregado(4);   // Ganha 4 salários mínimos - desconto de 10% do salário mínimo
-        
-        // Adicionando empregados à loja
-        loja.adicionar(emp1);
-        loja.adicionar(emp2);
-        loja.adicionar(emp3);
-        
-        // Exibindo informações da loja e dos salários
-        System.out.println("Loja: " + loja.getNome() + " | CNPJ: " + loja.getCnpj());
-        System.out.println("Salário Total da Loja: R$" + loja.getSalarioTotal());
-        System.out.println("Desconto Total da Loja: R$" + loja.getDescontoTotal());
-        System.out.println("Empregado com maior salário (Marajá): Matrícula " + loja.getMaraja().getMatricula());
-        
-        // Removendo um empregado e exibindo os valores atualizados
-        loja.remover(emp2);
-        System.out.println("\nApós remover um empregado:");
-        System.out.println("Salário Total da Loja: R$" + loja.getSalarioTotal());
-        System.out.println("Desconto Total da Loja: R$" + loja.getDescontoTotal());
-        System.out.println("Empregado com maior salário (Marajá): Matrícula " + loja.getMaraja().getMatricula());
+        // LOJA 2
+        System.out.println("EMPREGADOS:");
+        for (Empregado e : loja2.getEmpregados()) {
+            System.out.println("   MATRÍCULA = " + e.getMatricula() + " (Quantidade = " + e.getQuantidade() + ") => Salário = " + e.getSalario() + " / " + e.getLoja().getNome());
+        }
+        System.out.println("\n--- Removendo o último empregado da LOJA 2 ---\n");
+
+        if (!loja2.getEmpregados().isEmpty()) {
+            loja2.remover(loja2.getEmpregados().get(loja2.getEmpregados().size() - 1));
+        }
+
+        System.out.println("EMPREGADOS:");
+        for (Empregado e : loja2.getEmpregados()) {
+            System.out.println("   MATRÍCULA = " + e.getMatricula() + " (Quantidade = " + e.getQuantidade() + ") => Salário = " + e.getSalario() + " / " + e.getLoja().getNome());
+        }
+        System.out.println("-- LISTA DE EMPREGADOS DA LOJA 2 ATUALIZADA ---\n");
+
+
+        // LOJA 1
+        System.out.println("\n--- LOJA 1 ---\n");
+        System.out.println("CNPJ: " + loja1.getCnpj());
+        System.out.println("NOME: " + loja1.getNome());
+        System.out.println("GERENTE: " + loja1.getGerente().getMatricula() + " Gratificação = " + loja1.getGerente().getGratificacao());
+        System.out.println("EMPREGADOS:");
+        for (Empregado e : loja1.getEmpregados()) {
+            System.out.println("   MATRÍCULA = " + e.getMatricula() + " (Quantidade = " + e.getQuantidade() + ") => Salário = " + e.getSalario() + " / " + e.getLoja().getNome());
+        }
+        System.out.println("SALÁRIO TOTAL = " + loja1.getSalarioTotal());
+        System.out.println("DESCONTO TOTAL = " + loja1.getDescontoTotal());
+        Empregado maraja1 = loja1.getMaraja();
+        if (maraja1 != null) {
+            System.out.println("MARAJA = " + maraja1.getMatricula() + ", Salário = " + maraja1.getSalario());
+        }
+
+        // LOJA 2
+        System.out.println("\n--- LOJA 2 ---\n");
+        System.out.println("CNPJ: " + loja2.getCnpj());
+        System.out.println("NOME: " + loja2.getNome());
+        System.out.println("GERENTE: " + loja2.getGerente().getMatricula() + " Gratificação = " + loja2.getGerente().getGratificacao());
+        System.out.println("EMPREGADOS:");
+        for (Empregado e : loja2.getEmpregados()) {
+            System.out.println("   MATRÍCULA = " + e.getMatricula() + " (Quantidade = " + e.getQuantidade() + ") => Salário = " + e.getSalario() + " / " + e.getLoja().getNome());
+        }
+        System.out.println("SALÁRIO TOTAL = " + loja2.getSalarioTotal());
+        System.out.println("DESCONTO TOTAL = " + loja2.getDescontoTotal());
+        Empregado maraja2 = loja2.getMaraja();
+        if (maraja2 != null) {
+            System.out.println("MARAJA = " + maraja2.getMatricula() + ", Salário = " + maraja2.getSalario());
+        }
+
+        // Listagem Final
+        System.out.println("\n--- Listar todos os empregados:");
+        ArrayList<Empregado> todos = new ArrayList<>();
+        todos.addAll(loja1.getEmpregados());
+        todos.addAll(loja2.getEmpregados());
+
+        for (Empregado e : todos) {
+            System.out.println("   MATRÍCULA = " + e.getMatricula() + " (Quantidade = " + e.getQuantidade() + ") => Salário = " + e.getSalario() + " / " + e.getLoja().getNome());
+        }
     }
 }

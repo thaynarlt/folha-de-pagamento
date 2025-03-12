@@ -22,6 +22,7 @@ public class Loja {
         return this.nome;
     }
 
+
     // Adicionar e Remover empregado
     public void adicionar(Empregado empregado) {
         empregado.setLoja(this);

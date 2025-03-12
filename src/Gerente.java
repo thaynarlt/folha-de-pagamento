@@ -10,4 +10,10 @@ public class Gerente extends Empregado {
     public double getSalario() {
         return super.getSalario() + gratificacao;
     }
+
+    public double getGratificacao() {
+        return this.gratificacao;
+    }
+    
+
 }

@@ -34,6 +34,10 @@ public class Empregado {
         return (quantidade * salarioMinimo) - (0.1 * salarioMinimo);
     }
 
+    public Loja getLoja() {
+        return this.loja;
+    }
+
     // Setters
 
     public void setLoja(Loja loja) {
