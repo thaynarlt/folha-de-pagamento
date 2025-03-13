@@ -15,17 +15,18 @@ public class Main {
         loja2.adicionar(new Empregado(2));
         
         // LOJA 2
-        System.out.println("EMPREGADOS:");
+        System.out.println("EMPREGADOS LOJA 2:");
         for (Empregado e : loja2.getEmpregados()) {
             System.out.println("   MATRÍCULA = " + e.getMatricula() + " (Quantidade = " + e.getQuantidade() + ") => Salário = " + e.getSalario() + " / " + e.getLoja().getNome());
         }
         System.out.println("\n--- Removendo o último empregado da LOJA 2 ---\n");
 
+        // Remover o último empregado da loja 2
         if (!loja2.getEmpregados().isEmpty()) {
             loja2.remover(loja2.getEmpregados().get(loja2.getEmpregados().size() - 1));
         }
 
-        System.out.println("EMPREGADOS:");
+        System.out.println("EMPREGADOS ATUALIZADOS DA LOJA 2:");
         for (Empregado e : loja2.getEmpregados()) {
             System.out.println("   MATRÍCULA = " + e.getMatricula() + " (Quantidade = " + e.getQuantidade() + ") => Salário = " + e.getSalario() + " / " + e.getLoja().getNome());
         }
@@ -35,17 +36,17 @@ public class Main {
         // LOJA 1
         System.out.println("\n--- LOJA 1 ---\n");
         System.out.println("CNPJ: " + loja1.getCnpj());
-        System.out.println("NOME: " + loja1.getNome());
-        System.out.println("GERENTE: " + loja1.getGerente().getMatricula() + " Gratificação = " + loja1.getGerente().getGratificacao());
-        System.out.println("EMPREGADOS:");
+        System.out.println("Nome: " + loja1.getNome());
+        System.out.println("Gerente: " + loja1.getGerente().getMatricula()+ ", " + " Gratificação = " + loja1.getGerente().getGratificacao());
+        System.out.println("Empregados:");
         for (Empregado e : loja1.getEmpregados()) {
-            System.out.println("   MATRÍCULA = " + e.getMatricula() + " (Quantidade = " + e.getQuantidade() + ") => Salário = " + e.getSalario() + " / " + e.getLoja().getNome());
+            System.out.println("   Matrícula = " + e.getMatricula() + " (Quantidade = " + e.getQuantidade() + ") => Salário = " + e.getSalario() + " | " + e.getLoja().getNome() + " | " + e.getDataAdmissao());
         }
-        System.out.println("SALÁRIO TOTAL = " + loja1.getSalarioTotal());
-        System.out.println("DESCONTO TOTAL = " + loja1.getDescontoTotal());
+        System.out.println("Salário Total = " + loja1.getSalarioTotal());
+        System.out.println("Desconto Total = " + loja1.getDescontoTotal());
         Empregado maraja1 = loja1.getMaraja();
         if (maraja1 != null) {
-            System.out.println("MARAJA = " + maraja1.getMatricula() + ", Salário = " + maraja1.getSalario());
+            System.out.println("Maraja = " + maraja1.getMatricula() + ", Salario = " + maraja1.getSalario());
         }
 
         // LOJA 2
